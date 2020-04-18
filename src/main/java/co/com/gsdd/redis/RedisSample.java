@@ -50,19 +50,19 @@ public class RedisSample {
         LocationDTO location = new LocationDTO();
         location.setCity("Medellín");
         location.setAddress("Fake street 123");
-        UserDTO usuario = new UserDTO();
-        usuario.setName("King");
-        usuario.setLastName("Bradley");
-        usuario.setLocation(location);
-        byte[] byteArray = encode(k, usuario);
+        UserDTO user = new UserDTO();
+        user.setName("King");
+        user.setLastName("Bradley");
+        user.setLocation(location);
+        byte[] byteArray = encode(k, user);
         byte[] keyArray = encode(k, KEY_LIST);
-        byte[] nombre = "Kryo".getBytes();
+        byte[] name = "Kryo".getBytes();
         // put
-        jedis.hset(nombre, keyArray, byteArray);
+        jedis.hset(name, keyArray, byteArray);
         // get
-        byte[] arrayMapeado = jedis.hget(nombre, keyArray);
-        UserDTO usuarioD = decode(k, arrayMapeado);
-        log.info("{}", usuarioD);
+        byte[] arrayMapeado = jedis.hget(name, keyArray);
+        UserDTO decodedUser = decode(k, arrayMapeado);
+        log.info("{}", decodedUser);
     }
 
     private static <T> byte[] encode(Kryo kryo, T obj) {
