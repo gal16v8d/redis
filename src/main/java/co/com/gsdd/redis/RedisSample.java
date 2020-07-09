@@ -6,6 +6,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 
+import co.com.gsdd.docker.config.util.DockerEnvLoader;
 import co.com.gsdd.redis.dto.LocationDTO;
 import co.com.gsdd.redis.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +16,6 @@ import redis.clients.jedis.JedisPool;
 @Slf4j
 public class RedisSample {
 
-    private static final String REDIS_HOST = "192.168.99.100";
     private static final int REDIS_PORT = 6379;
     private static final String KEY = "sample-name";
     private static final String KEY_LIST = "sample-list";
@@ -25,7 +25,8 @@ public class RedisSample {
     }
 
     private static void jedisPoolConnection() {
-        try (JedisPool jedisPool = new JedisPool(REDIS_HOST, REDIS_PORT); Jedis jedis = jedisPool.getResource();) {
+        try (JedisPool jedisPool = new JedisPool(DockerEnvLoader.getDockerServiceIp(), REDIS_PORT);
+                Jedis jedis = jedisPool.getResource()) {
             log.info("Connection established");
             log.info("Server is running: {}", jedis.ping());
             jedis.set(KEY, "Redis sample");
