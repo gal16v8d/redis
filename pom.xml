@@ -53,7 +53,7 @@
 		<redis.version>2.9.0</redis.version>
 		<redisson.version>3.6.4</redisson.version>
 		<lettuce.version>4.4.3.Final</lettuce.version>
-		<docker-config-util.version>1.0.001</docker-config-util.version>
+		<docker-config-util.version>1.0.002</docker-config-util.version>
 	</properties>
 
 	<dependencies>
