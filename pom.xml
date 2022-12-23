@@ -40,16 +40,18 @@
 
 		<checkstyle.version>10.1</checkstyle.version>
 
-		<junit.version>5.9.0</junit.version>
+		<junit.version>5.9.1</junit.version>
 		<!-- Logger api -->
 		<slf4j.version>1.7.36</slf4j.version>
 		<!-- Logger impl -->
-		<log4j.version>2.18.0</log4j.version>
+		<log4j.version>2.19.0</log4j.version>
 		<lombok.version>1.18.24</lombok.version>
-		<kryo.version>4.0.2</kryo.version>
-		<redis.version>2.9.0</redis.version>
+		<kryo.version>5.3.0</kryo.version>
+		<redis.version>4.3.1</redis.version>
+		<!--
 		<redisson.version>3.6.4</redisson.version>
 		<lettuce.version>4.4.3.Final</lettuce.version>
+		-->
 		<docker-config-util.version>2.0.1</docker-config-util.version>
 	</properties>
 
@@ -93,7 +95,7 @@
 
 		<dependency>
 			<groupId>com.esotericsoftware</groupId>
-			<artifactId>kryo-shaded</artifactId>
+			<artifactId>kryo</artifactId>
 			<version>${kryo.version}</version>
 		</dependency>
 
@@ -103,19 +105,21 @@
 			<version>${redis.version}</version>
 		</dependency>
 
-		<!-- Java 8: https://redisson.org/ -->
+		<!-- Java 8: https://redisson.org/ 
 		<dependency>
 			<groupId>org.redisson</groupId>
 			<artifactId>redisson</artifactId>
 			<version>${redisson.version}</version>
 		</dependency>
+		-->
 
-		<!-- Java 8: https://lettuce.io/ -->
+		<!-- Java 8: https://lettuce.io/ 
 		<dependency>
 			<groupId>biz.paluch.redis</groupId>
 			<artifactId>lettuce</artifactId>
 			<version>${lettuce.version}</version>
 		</dependency>
+		-->
 
 		<dependency>
 			<groupId>com.gsdd</groupId>

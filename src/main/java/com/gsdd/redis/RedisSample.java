@@ -46,6 +46,7 @@ public class RedisSample {
   private static void cypherStore(Jedis jedis) {
     Kryo k = new Kryo();
     k.register(UserDTO.class);
+    k.register(LocationDTO.class);
     k.register(String.class);
     LocationDTO location = new LocationDTO();
     location.setCity("Medellín");

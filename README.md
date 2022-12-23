@@ -10,6 +10,6 @@ For the sample you will need:
 
 For get started with the docker image execute:
 
-docker pull redis
-redis instance: docker run -p 6379:6379 -d redis
-redis with persistent storage: docker run -p 6379:6379 -d redis redis-server --appendonly yes
+- docker pull redis
+- redis instance: docker run -p 6379:6379 -d redis
+- redis with persistent storage: docker run -p 6379:6379 -d redis redis-server --appendonly yes
