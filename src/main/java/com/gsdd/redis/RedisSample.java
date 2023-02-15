@@ -4,8 +4,8 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.gsdd.docker.config.util.DockerEnvLoader;
-import com.gsdd.redis.dto.LocationDTO;
-import com.gsdd.redis.dto.UserDTO;
+import com.gsdd.redis.dto.LocationDto;
+import com.gsdd.redis.dto.UserDto;
 import java.io.ByteArrayOutputStream;
 import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.Jedis;
@@ -45,13 +45,13 @@ public class RedisSample {
 
   private static void cypherStore(Jedis jedis) {
     Kryo k = new Kryo();
-    k.register(UserDTO.class);
-    k.register(LocationDTO.class);
+    k.register(UserDto.class);
+    k.register(LocationDto.class);
     k.register(String.class);
-    LocationDTO location = new LocationDTO();
+    LocationDto location = new LocationDto();
     location.setCity("Medellín");
     location.setAddress("Fake street 123");
-    UserDTO user = new UserDTO();
+    UserDto user = new UserDto();
     user.setName("King");
     user.setLastName("Bradley");
     user.setLocation(location);
@@ -62,7 +62,7 @@ public class RedisSample {
     jedis.hset(name, keyArray, byteArray);
     // get
     byte[] arrayMapeado = jedis.hget(name, keyArray);
-    UserDTO decodedUser = decode(k, arrayMapeado);
+    UserDto decodedUser = decode(k, arrayMapeado);
     log.info("{}", decodedUser);
   }
 

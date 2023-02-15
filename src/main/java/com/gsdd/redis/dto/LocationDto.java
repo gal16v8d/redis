@@ -6,7 +6,7 @@ import lombok.Generated;
 
 @Generated
 @Data
-public class LocationDTO implements Serializable {
+public class LocationDto implements Serializable {
 
   private static final long serialVersionUID = 6907545373081939224L;
   private String address;
