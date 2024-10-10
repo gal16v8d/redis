@@ -33,9 +33,10 @@ public class RedisSample {
       jedis.lpush(KEY_LIST, "Mongodb");
       jedis.lpush(KEY_LIST, "Mysql");
       // Get the stored data and print it
-      jedis.lrange(KEY_LIST, 0, 5).stream()
+      jedis
+          .lrange(KEY_LIST, 0, 5)
           .forEach(value -> log.info("List values stored on Redis:: {}", value));
-      jedis.keys("*").stream().forEach(value -> log.info("Key values stored on Redis:: {}", value));
+      jedis.keys("*").forEach(value -> log.info("Key values stored on Redis:: {}", value));
       jedis.del(KEY);
       jedis.del(KEY_LIST);
       log.info("Current store on Redis:: {}", jedis.keys("*").size());
@@ -48,21 +49,16 @@ public class RedisSample {
     k.register(UserDto.class);
     k.register(LocationDto.class);
     k.register(String.class);
-    LocationDto location = new LocationDto();
-    location.setCity("Medellín");
-    location.setAddress("Fake street 123");
-    UserDto user = new UserDto();
-    user.setName("King");
-    user.setLastName("Bradley");
-    user.setLocation(location);
+    var location = LocationDto.builder().city("Medellín").address("Fake street 123").build();
+    UserDto user = UserDto.builder().name("King").lastName("Bradley").location(location).build();
     byte[] byteArray = encode(k, user);
     byte[] keyArray = encode(k, KEY_LIST);
     byte[] name = "Kryo".getBytes();
     // put
     jedis.hset(name, keyArray, byteArray);
     // get
-    byte[] arrayMapeado = jedis.hget(name, keyArray);
-    UserDto decodedUser = decode(k, arrayMapeado);
+    byte[] jedisArray = jedis.hget(name, keyArray);
+    UserDto decodedUser = decode(k, jedisArray);
     log.info("{}", decodedUser);
   }
 

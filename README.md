@@ -4,7 +4,7 @@ Basic sample of Redis usage.
 
 For the sample you will need:
 
-* Java 8
+* Java 21
 * Maven
 * Docker
 

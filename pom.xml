@@ -2,15 +2,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>com.gsdd</groupId>
 		<artifactId>gsdd-parent</artifactId>
-		<version>1.0.3</version>
+		<version>1.0.4</version>
 	</parent>
 
 	<artifactId>redis</artifactId>
-	<version>2.1.0</version>
+	<version>2.1.1</version>
 	<packaging>jar</packaging>
 
 	<name>redis</name>
@@ -24,13 +24,13 @@
 		<!-- If true skips IT test execution -->
 		<skip.integration.tests>false</skip.integration.tests>
 
-		<kryo.version>5.3.0</kryo.version>
-		<redis.version>4.3.1</redis.version>
+		<kryo.version>5.6.1</kryo.version>
+		<redis.version>5.2.0</redis.version>
 		<!--
 		<redisson.version>3.6.4</redisson.version>
 		<lettuce.version>4.4.3.Final</lettuce.version>
 		-->
-		<docker-config-util.version>2.1.0</docker-config-util.version>
+		<docker-config-util.version>2.1.1</docker-config-util.version>
 	</properties>
 
 	<dependencies>
@@ -77,7 +77,7 @@
 			<version>${redis.version}</version>
 		</dependency>
 
-		<!-- Java 8: https://redisson.org/ 
+		<!-- Java 8: https://redisson.org/
 		<dependency>
 			<groupId>org.redisson</groupId>
 			<artifactId>redisson</artifactId>
@@ -85,7 +85,7 @@
 		</dependency>
 		-->
 
-		<!-- Java 8: https://lettuce.io/ 
+		<!-- Java 8: https://lettuce.io/
 		<dependency>
 			<groupId>biz.paluch.redis</groupId>
 			<artifactId>lettuce</artifactId>
@@ -239,7 +239,7 @@
 					<!-- define a language-specific format -->
 					<java>
 						<googleJavaFormat>
-							<version>1.15.0</version>
+							<version>1.17.0</version>
 							<reflowLongStrings>true</reflowLongStrings>
 						</googleJavaFormat>
 						<trimTrailingWhitespace />
